@@ -1,0 +1,9 @@
+如果mysql忘记了密码怎么办？有几种解决办法呢？
+我知道的：
+第一步：关闭MYSQL服务
+第二步：使用-mysqld-skip-grant-tables来跳过验证服务,显示在任务管理器中可以看到名称为mysqld的进程，就OK啦
+第三步：再打开另一个命令行窗口，输入不加密的登录命令：mysql -u root
+第四步：显示登录成功后，可以使用update语句修改密码
+第五步：修改完成后，必须使用flush privileges语句刷新权限表，这样新的密码才能生效
+第六步：将输入mysqld --skip-grant-tables命令的命令行窗口关闭
+第七步：再重新登录就OK
