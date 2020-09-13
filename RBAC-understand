@@ -1,0 +1,52 @@
+一、            RBAC模型-总结
+    基于角色的权限访问控制。权限与角色相关联，用户通过成为适当角色的成员
+而得到这些角色的权限，极大地简化对权限的管理。RBAC的基本思想是：授权给用
+户的访问权限，通常由用户在一个组织中担当的角色来确定。RBAC中许可被授权
+给角色，角色被授权给用户，用户不直接与许可关联。RBAC对访问权限的授权由
+管理员统一管理，RBAC根据用户在组织内所处的角色作出访问授权与控制，授权
+规定是强加给用户的，用户不能自主地将访问权限传给他人，这是一种非自主型集
+中式访问控制方式。也本着继承的概念，本质是对访问矩阵模型的扩充，但不可完全
+取代矩阵模型。
+      在RBAC模型中，who,what,how构成了访问权限三元组，即：who对what（which）
+进行how的操作。Who：权限的拥用者或主体；What：权限针对的对象或资源；how:
+具体的权限。同时，基于角色访问控制的要素包括用户、角色、许可等基本定义。
+用户即可以独立访问计算机系统中的数据或者用数据表示的其他资源的主体；角色即
+一个组织或任务中的工作或者位置，它代表了一种权利、资格和责任；许可（特权）即
+允许对一个或多个客体执行的操作。
+     可以理解成：一个用户可经授权而拥有多个角色，一个角色可由多个用户构成；每个
+角色可拥有多种许可，每个许可也可授权给多个不同的角色。每个操作可施加于多个
+客体（受控对象），每个客体也可以接受多个操作。其中的相关表有：用户表、角色表、
+客体表、操作算子表、许可表。
+     RBAC支持三个著名的安全原则：最小权限原则、责任分离原则、数据抽象原则。这些
+原则使得RBAC模型有着广泛的应用前景。
+二、相关表的创建及数据的增加、删除、修改
+用户表：创建：create table goods（
+       id INT COMMENT '编号',
+       name VARCHAR(32) COMMENT '商品名',
+       price INT COMMENT '价格',
+       description VARCHAR(225) COMMENT '商品描述'
+       );
+       增加：
+       ALTER TABLE goods ADD num INT AFTER name;
+       删除：
+       ALTER TABLE goods DROP price;
+       修改：
+       ALTER TABLE goods CHANGE description name VARCHAR(255);
+ 角色表：创建：create table wupin（
+       id INT COMMENT '编号',
+       name VARCHAR(32) COMMENT '商品名',
+       price INT COMMENT '价格',
+       description VARCHAR(225) COMMENT '商品描述'
+       );
+       增加：
+       INSERT INTO goods VALUES
+       (1,'notebook',4998,'High cost performance'),
+       (2,'Moblie phone',NULL,NULL);
+       修改：
+       UPDATE goods SET price=5689 WHERE id=2;
+       删除：
+       DELETE FROM goods WHERE id=1;
+ ……
+
+       
+       
